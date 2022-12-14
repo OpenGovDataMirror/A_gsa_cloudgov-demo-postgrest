@@ -1,0 +1,21 @@
+---
+# To deploy this manifest: 
+#   1. Copy vars.yml.template to vars.yml and edit in your own values
+#   2. cf create-service aws-rds shared-psql ((app_name))-db
+#   3. cf push --vars-file vars.yml
+
+applications:
+  - name: ((app_name))
+    command: ./start.sh
+    health-check-type: process
+    memory: 64M
+    instances: 1
+    random-route: true
+    buildpacks:
+    - python_buildpack
+    - binary_buildpack
+    services:
+    - ((app_name))-db        
+    env:
+      DB_SCHEMA: ((db_schema))
+

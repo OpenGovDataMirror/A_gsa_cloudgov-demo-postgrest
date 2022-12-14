@@ -1,0 +1,16 @@
+# Copy this file to vars.yml and then edit in your own values here
+
+# The name to use for the app in Cloud Foundry. 
+# You might want to customize this (eg "postgrest-<yourname>") to avoid 
+# collisions with other instances of postgrest in the same space.
+# If you do change it, you'll also need to change the service name in 
+# you deploy.sh file. Setting `postgrest-myname` here will need a to be
+# set as `postgrest-myname-db` in the deploy.sh file.
+app_name: postgrest
+
+# The role to use for anonymous (unauthenticated) access to the database. 
+# TODO: Provision the role at startup time if it doesn't already exist.
+# db_anon_role: some-user
+
+# The database schema that you want PostgREST to serve
+db_schema: public
